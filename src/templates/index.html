@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div>
+        <h2>Start implementing views here</h2>
+    </div>
+    <div>
+        <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
+        <div id="SamplePlayerDivID"></div>
+        <script type="text/javascript">
+            var options = {
+                width: 854,
+                height: 480,
+                channel: '{{ channel_name }}',
+            };
+            var player = new Twitch.Player("SamplePlayerDivID", options);
+            player.setVolume(0.5);
+        </script>
+    </div>
+</head>
+<body>
+
+</body>
+</html>

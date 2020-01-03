@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from src import check_twitch
+from twitch_rivals import check_twitch
 
 app = Flask(__name__)
 

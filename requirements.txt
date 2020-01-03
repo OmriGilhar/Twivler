@@ -1,3 +1,8 @@
+#Web related:
 flask
+flask-wtf
+wtforms
+
+#Other
 python-twitch-client
 pytest

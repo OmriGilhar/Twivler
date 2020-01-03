@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <div>
-        <!--LINK SEARCH BLAT-->
+        <form method="POST" action="{{ url_for('search_game') }}">
+            <h1>Enter game name</h1>
+            <p>
+                 {{ form.csrf_token }}
+                {{ form.game_name.label }}
+                {{ form.game_name(size=30) }}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
         <!--Video frame-->
         <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
         <div id="SamplePlayerDivID">

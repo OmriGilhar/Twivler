@@ -11,6 +11,21 @@
         {{ form.submit() }}</p>
 </form>
 
+<!--Choose game from list and redirect to index.html with the game-->
+<form class="form-inline" method="POST" action="{{ url_for('drop_down') }}">
+  <div class="form-group">
+    <div class="input-group">
+        <span class="input-group-addon">Please select a Game</span>
+            <select name="game_select" class="selectpicker form-control">
+              {% for o in games_names %}
+              <option value="{{ o }}">{{ o }}</option>
+              {% endfor %}
+            </select>
+    </div>
+    <button type="submit" class="btn btn-default">Go</button>
+  </div>
+</form>
+
 <!--Video frame-->
 <script src= "https://player.twitch.tv/js/embed/v1.js"></script>
 <div id="SamplePlayerDivID">

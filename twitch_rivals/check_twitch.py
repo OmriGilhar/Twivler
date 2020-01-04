@@ -7,6 +7,7 @@ from collections import namedtuple
 StreamInfo = namedtuple('StreamInfo', 'id game preview')
 ChannelInfo = namedtuple('ChannelInfo', 'id name display_name game status logo video_banner profile_banner'
                                         ' profile_banner_background_color url description ')
+GameInfo = namedtuple('GameInfo', 'name id box logo')
 
 
 class CantFindUrlException(Exception):
@@ -22,6 +23,15 @@ def get_first_channel_url(channels):
         return channels[0]["url"]
     except KeyError:
         raise CantFindUrlException("something went wrong")
+
+
+def get_top_games(client, limit=10, offset=0):
+    return client.games.get_top(limit=limit, offset=offset)
+
+
+def create_game_info(game):
+    return GameInfo(name=game['game']['name'], id=game['game']['id'], box=game['game']['box'],
+                    logo=game['game']['logo'])
 
 
 def get_twitch_channels(client, name):
@@ -73,6 +83,5 @@ def create_dummy_stream_info():
 
 
 def create_client(client_id, client_secret):
-    # Create a client base on the client ID from the json file.
     client = twitch.TwitchClient(client_id=client_id)
     return client

@@ -32,7 +32,7 @@ def search_game():
     channel_info = check_twitch.create_dummy_channel_info()
     games = check_twitch.get_top_games(client)
     games_info = [check_twitch.create_game_info(game) for game in games]
-    games_names = [game_info.name for game_info in games_info]
+    game_names = [game_info.name for game_info in games_info]
 
     # Game search - updates stream_detail through POST method
     form = SearchForm()
@@ -44,17 +44,14 @@ def search_game():
         'search_game.html',
         channel_name=channel_info.display_name,
         form=form,
-        games_names=games_names
+        game_names=game_names
     )
 
 
-@app.route("/drop_down", methods=['GET', 'POST'])
-def drop_down():
+@app.route("/select_game", methods=['GET', 'POST'])
+def select_game():
     selected_game = request.form.get('game_select')
-    return index(selected_game)  # just to see what select is
-
-
-# opens on http://localhost:5000
+    return index(selected_game)
 
 
 if __name__ == "__main__":

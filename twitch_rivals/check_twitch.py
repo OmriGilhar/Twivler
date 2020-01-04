@@ -83,11 +83,5 @@ def create_dummy_stream_info():
 
 
 def create_client(client_id, client_secret):
-    # Create a client base on the client ID from the json file.
     client = twitch.TwitchClient(client_id=client_id)
     return client
-
-
-if __name__ == '__main__':
-    x = create_dummy_channel_info()
-    print(type(x))

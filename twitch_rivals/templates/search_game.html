@@ -12,13 +12,13 @@
 </form>
 
 <!--Choose game from list and redirect to index.html with the game-->
-<form class="form-inline" method="POST" action="{{ url_for('drop_down') }}">
+<form class="form-inline" method="POST" action="{{ url_for('select_game') }}">
   <div class="form-group">
     <div class="input-group">
         <span class="input-group-addon">Please select a Game</span>
             <select name="game_select" class="selectpicker form-control">
-              {% for o in games_names %}
-              <option value="{{ o }}">{{ o }}</option>
+              {% for game in game_names %}
+              <option value="{{ game }}">{{ game }}</option>
               {% endfor %}
             </select>
     </div>

@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = 'bushkape'
 
 
 class SearchForm(FlaskForm):
-    game_name = StringField('Game')
+    game_name = StringField('')
     submit = SubmitField('Go')
 
 

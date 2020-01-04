@@ -1,0 +1,28 @@
+
+.navbar {
+    background-color: #19171c;
+    overflow: hidden;
+}
+
+body{
+    background-color: #7d5bbe;
+    color: white;
+    font-family: Arial Black;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+    }
+h1{
+    color: white;
+    font-size: 50px;
+}
+a {
+    color: white;
+    font-size:25px;
+    font-family: verdana;
+}
+
+p{
+    font-family: verdana;
+    font-size: 20px;
+}

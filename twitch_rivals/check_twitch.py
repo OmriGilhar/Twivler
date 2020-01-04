@@ -1,6 +1,12 @@
 import twitch
 import os
 import json
+from collections import namedtuple
+
+
+StreamInfo = namedtuple('StreamInfo', 'id game preview')
+ChannelInfo = namedtuple('ChannelInfo', 'id name display_name game status logo video_banner profile_banner'
+                                        ' profile_banner_background_color url description ')
 
 
 class CantFindUrlException(Exception):
@@ -42,6 +48,28 @@ def get_client_id():
     client_id, client_secret = pars_twitch_info(twitch_json_path)
     ##############################################
     return client_id, client_secret
+
+
+def create_stream_info(stream):
+    return StreamInfo(id=stream['id'], game=stream['game'], preview=stream['preview'])
+
+
+def create_channel_info(channel):
+    return ChannelInfo(id=channel['id'], name=channel['name'], display_name=channel['display_name'],
+                       game=channel['game'], status=channel['status'], description=channel['description'],
+                       logo=channel['logo'], video_banner=channel['video_banner'],
+                       profile_banner=channel['profile_banner'],
+                       profile_banner_background_color=channel['profile_banner_background_color'], url=channel['url'])
+
+
+def create_dummy_channel_info():
+    return ChannelInfo(id='None', name='None', display_name='None', game='None', status='None', description='None',
+                       logo='None', video_banner='None', profile_banner='None', profile_banner_background_color='None',
+                       url='None')
+
+
+def create_dummy_stream_info():
+    return StreamInfo(id='None', game='None', preview='None')
 
 
 def create_client(client_id, client_secret):

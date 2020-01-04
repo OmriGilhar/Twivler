@@ -16,11 +16,13 @@ class SearchForm(FlaskForm):
 def index():
     client_id, client_secret = check_twitch.get_client_id()
     client = check_twitch.create_client(client_id, client_secret)
-    stream_detail = check_twitch.pull_live_streams_by_game(client, 'FIFA 20', 1)
+    streams = check_twitch.pull_live_streams_by_game(client, 'FIFA 20', 1)
+    stream_info = check_twitch.create_stream_info(streams[0])
+    channel_info = check_twitch.create_channel_info(streams[0]['channel'])
 
     return render_template(
         'index.html',
-        channel_name=str(stream_detail[0]['channel']['name'])
+        channel_name=channel_info.display_name
     )
 
 
@@ -28,15 +30,17 @@ def index():
 def search_game():
     client_id, client_secret = check_twitch.get_client_id()
     client = check_twitch.create_client(client_id, client_secret)
-    stream_detail = [{'channel': {'name': 'None'}}]
+    channel_info = check_twitch.create_dummy_channel_info()
 
     # Game search - updates stream_detail through POST method
     form = SearchForm()
     if form.validate_on_submit():
-        stream_detail = check_twitch.pull_live_streams_by_game(client, form.game_name.data, 1)
+        streams = check_twitch.pull_live_streams_by_game(client, form.game_name.data, 1)
+        stream_info = check_twitch.create_stream_info(streams[0])
+        channel_info = check_twitch.create_channel_info(streams[0]['channel'])
     return render_template(
         'search_game.html',
-        channel_name=str(stream_detail[0]['channel']['name']),
+        channel_name=channel_info.display_name,
         form=form
     )
 # opens on http://localhost:5000

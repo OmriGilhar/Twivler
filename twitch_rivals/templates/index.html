@@ -2,11 +2,10 @@
 
 
 {% block content %}
-<a class='search_link' href="search_game">Search page</a>
+<a class='search_link' href="search_game" style="margin-left:25%">Search page</a>
 
 <!--Video frame-->
-<script src= "https://player.twitch.tv/js/embed/v1.js"></script>
-<div id="SamplePlayerDivID">
+<div id="SamplePlayerDivID" style="margin-left:25%">
     <script type="text/javascript">
         var options = {
             width: 854,
@@ -17,6 +16,6 @@
         player.setVolume(0.5);
     </script>
     <!--Chat frame-->
-    <iframe src="https://www.twitch.tv/embed/{{ channel_name }}/chat" frameborder="0" scrolling="no" height="480" width="350"></iframe>
+    <iframe src="https://www.twitch.tv/embed/{{ channel_name }}/chat?darkpopout" frameborder="0" scrolling="no" height="480" width="350"></iframe>
 </div>
 {% endblock %}

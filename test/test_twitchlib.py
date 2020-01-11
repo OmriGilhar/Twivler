@@ -231,3 +231,58 @@ def test_create_stream_info(raw_stream, expected):
 def test_create_game_info(raw_game, expected):
     result = tl.create_game_info(raw_game)
     assert result == expected
+
+
+@pytest.mark.parametrize(
+    "raw_games, expected",
+    [
+        (
+            [
+                tl.GameInfo(
+                    name='game-name1',
+                    id=123456,
+                    box={
+                        'large': 'large-box',
+                        'medium': 'medium-box',
+                        'small': 'small-box',
+                        'template': 'template-box'
+                    },
+                    logo={
+                        'large': 'large-logo-url',
+                        'medium': 'medium-logo-url',
+                        'small': 'small-logo-url',
+                        'template': 'template-logo-url'
+                    }
+                ),
+                tl.GameInfo(
+                    name='game-name2',
+                    id=123456,
+                    box={
+                        'large': 'large-box',
+                        'medium': 'medium-box',
+                        'small': 'small-box',
+                        'template': 'template-box'
+                    },
+                    logo={
+                        'large': 'large-logo-url',
+                        'medium': 'medium-logo-url',
+                        'small': 'small-logo-url',
+                        'template': 'template-logo-url'
+                    }
+                )
+            ],
+            [
+                {
+                    'value': 'game-name1',
+                    'data': None
+                }, {
+                    'value': 'game-name2',
+                    'data': None
+                }
+            ]
+        )
+    ]
+)
+def test_create_game_list(raw_games, expected):
+    result = tl.create_game_list(raw_games)
+    assert result == expected

@@ -2,6 +2,7 @@
 """
 
 import twitch
+from twitch.helix.api import TwitchHelix
 import os
 import json
 from collections import namedtuple
@@ -110,6 +111,18 @@ def create_dummy_stream_info():
     return StreamInfo(id='None', game='None', preview='None')
 
 
-def create_client(client_id, client_secret):
+def create_client_v5(client_id):
     client = twitch.TwitchClient(client_id=client_id)
     return client
+
+
+def create_client_helix(client_id):
+    client_helix = TwitchHelix(client_id=client_id)
+    return client_helix
+
+
+def create_game_list(games):
+    game_list = []
+    for game in games:
+        game_list.append({'value': game.name, 'data': None})
+    return game_list

@@ -8,6 +8,13 @@ body {
 .form-inline input{
     border-radius:3px 0 0 3px;
 }
+
+
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+
 .form-inline button {
     border-radius:0 3px 3px 0;
     background-color: #212121;

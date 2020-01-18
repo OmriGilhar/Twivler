@@ -32,6 +32,13 @@ def index(selected_game='FIFA 20'):
     )
 
 
+@app.route('/about')
+def about():
+    return render_template(
+        'about.html',
+    )
+
+
 @app.route('/game/')
 def game():
     channel_info = None
